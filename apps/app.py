@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
 #import scraping
-import scraping2
+import scraping_challenge
 
 app = Flask(__name__)
 
@@ -18,7 +18,7 @@ def index():
 def scrape():
    mars = mongo.db.mars
    # mars_data = scraping.scrape_all()
-   mars_data = scraping2.scrape_all()
+   mars_data = scraping_challenge.scrape_all()
    mars.update({}, mars_data, upsert=True)
    return "Scraping Successful!"
    

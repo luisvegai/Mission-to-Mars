@@ -16,6 +16,8 @@ def scrape_all():
     browser = Browser('chrome', **executable_path)
     # browser = Browser("chrome", executable_path="chromedriver", headless=True)
     news_title, news_paragraph = mars_news(browser)
+    h_im = hem_images(browser)
+    t_im = thu_images(browser)
 # Run all scraping functions and store results in dictionary
     data = {
         "news_title": news_title,
@@ -23,8 +25,8 @@ def scrape_all():
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
         "last_modified": dt.datetime.now(),
-        "h_im": hem_images(browser),
-        "t_im": thu_images(browser)
+        "h_im": h_im,
+        "t_im": t_im
     }
     browser.quit()
     return data
@@ -125,7 +127,7 @@ def hem_images(browser):
             browser.back()
         except:
             browser.back()
-        return imf_dict
+    return imf_dict
 
 def thu_images(browser):
     # Visit URL
